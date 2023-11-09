@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,13 @@ public class Main : MonoBehaviour
         }
     }
 
-    public void OnLoaded(AsyncOperationHandle<GameObject> handle)
+    private void Awake()
+    {
+        Debug.Log("Build Path " + Addressables.BuildPath);
+        _assetReference.LoadAssetAsync<GameObject>().Completed += OnLoaded;
+    }
+
+    private void OnLoaded(AsyncOperationHandle<GameObject> handle)
     {
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
