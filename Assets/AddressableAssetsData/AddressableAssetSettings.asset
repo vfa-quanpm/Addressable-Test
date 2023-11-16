@@ -66,7 +66,7 @@ MonoBehaviour:
       - m_Id: 9246405cc762847498d9d790ad126385
         m_Value: ServerData/[BuildTarget]
       - m_Id: 3eee78cf034b0491f93f8fee83d106fa
-        m_Value: https://d4125025-0ddb-438f-993f-98c4dbef9edf.client-api.unity3dusercontent.com/client_api/v1/environments/production/buckets/aa6cf81a-27a8-497a-a4e9-fa609e565d97/release_by_badge/latest/entry_by_path/content/?path=
+        m_Value: https://d4125025-0ddb-438f-993f-98c4dbef9edf.client-api.unity3dusercontent.com/client_api/v1/environments/production/buckets/f407b326-9472-4832-a4c6-dbeee37cb8c4/releases/82e4d88a-cf39-4cfc-975d-4272e8fbc916/entry_by_path/content/?path=
     m_ProfileEntryNames:
     - m_Id: 3a4c6a415cddd462b9b54ff6e287d206
       m_Name: BuildTarget
