@@ -64,7 +64,7 @@ MonoBehaviour:
       - m_Id: 892a2bfc844224b60af3968402cdc034
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 9246405cc762847498d9d790ad126385
-        m_Value: ServerData/[BuildTarget]/test
+        m_Value: ServerData/Test/[BuildTarget]
       - m_Id: 3eee78cf034b0491f93f8fee83d106fa
         m_Value: https://d4125025-0ddb-438f-993f-98c4dbef9edf.client-api.unity3dusercontent.com/client_api/v1/environments/production/buckets/f407b326-9472-4832-a4c6-dbeee37cb8c4/releases/822b4901-11e9-4da6-9b6e-377626bb1a52/entry_by_path/content/?path=
     m_ProfileEntryNames:
