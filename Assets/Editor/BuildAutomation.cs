@@ -1,8 +1,12 @@
-using System.Diagnostics;
+using System.Collections;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class BuildAutomation
+public class BuildAutomation : MonoBehaviour
 {
     public static string APIKey = "408c54102b487c53b6f569030d31851f";
     public static string OrganizationId = "18967492849752";
@@ -12,30 +16,33 @@ public class BuildAutomation
     [MenuItem("Build/Build Automation")]
     public static void Build()
     {
-        string shellCommand = "curl -X POST " +
-            "-d '{\"clean\": true, \"delay\": 30}' " +
-            "-H \"Content - Type: application / json\" " +
-            $"-H \"Authorization: Basic {APIKey}\" " +
-            @"https://build-api.cloud.unity3d.com/api/v1/" +
-            $"orgs/{OrganizationId}/" +
-            $"projects/{ProjectId}/" +
-            $"buildtargets/{BuildTargetId}/builds";
+        string url = "https://build-api.cloud.unity3d.com/api/v1/" +
+                    $"orgs/{OrganizationId}/" +
+                    $"projects/{ProjectId}/" +
+                    $"buildtargets/{BuildTargetId}/builds";
+        string jsonData = "{\"clean\": true, \"delay\": 30}";
 
-        ProcessStartInfo startInfo = new ProcessStartInfo("/bin/bash");
-        startInfo.WorkingDirectory = "/";
-        startInfo.UseShellExecute = false;
-        startInfo.RedirectStandardInput = true;
-        startInfo.RedirectStandardOutput = true;
+        UnityEngine.Debug.Log("Run coroutine");
 
-        Process process = new Process();
-        process.StartInfo = startInfo;
-        process.Start();
+        using (UnityWebRequest www = UnityWebRequest.Post(url, jsonData, "application/json"))
+        {
+            www.SetRequestHeader("Authorization", "Basic 408c54102b487c53b6f569030d31851f");
+            www.SendWebRequest();
 
-        process.StandardInput.WriteLine(shellCommand);
-        //process.StandardInput.WriteLine("exit");  // if no exit then WaitForExit will lockup your program
-        process.StandardInput.Flush();
+            while(!www.isDone)
+            {
 
-        string line = process.StandardOutput.ReadLine();
-        UnityEngine.Debug.Log(line);
+            }
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                UnityEngine.Debug.Log(www.error);
+            }
+            else
+            {
+                UnityEngine.Debug.Log(www.downloadHandler.text);
+            }
+        }
     }
+
 }
