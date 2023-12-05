@@ -15,9 +15,9 @@ public class AutoIncrementVersionCodeInCloudBuild : MonoBehaviour
             buildNumberInt = bundleVersion + 1;
         }
 
-        Debug.LogWarning("Setting build number to " + buildNumber);
-        PlayerSettings.Android.bundleVersionCode = buidNumberInt;
-        PlayerSettings.iOS.buildNumber = buildNumber;
+        Debug.LogWarning("Setting build number to " + buildNumberInt);
+        PlayerSettings.Android.bundleVersionCode = buildNumberInt;
+        PlayerSettings.iOS.buildNumber = buildNumberInt;
     }
 #endif
 }
