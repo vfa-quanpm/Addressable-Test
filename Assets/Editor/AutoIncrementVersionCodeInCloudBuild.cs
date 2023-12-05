@@ -19,7 +19,8 @@ public class AutoIncrementVersionCodeInCloudBuild : MonoBehaviour
         PlayerSettings.Android.bundleVersionCode = buildNumberInt;
         PlayerSettings.iOS.buildNumber = buildNumberInt.ToString();
 
-        manifest.SetValue("buildNumber", (buildNumberInt + 1).ToString());
+        Debug.LogError("Build number index = 0" + manifest.GetValue("buildNumber", "0"));
+        Debug.LogError("Build number index = 1" + manifest.GetValue("buildNumber", "1"));
     }
 #endif
 }
