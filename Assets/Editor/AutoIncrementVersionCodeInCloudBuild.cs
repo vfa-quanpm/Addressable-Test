@@ -9,7 +9,7 @@ public class AutoIncrementVersionCodeInCloudBuild : MonoBehaviour
     {
         string buildNumber = manifest.GetValue("buildNumber", "0");
         int buildNumberInt = int.Parse(buildNumber);
-        int bundleVersion = int.Parse(PlayerSettings.Android.bundleVersion);
+        int bundleVersion = PlayerSettings.Android.bundleVersionCode;
         if(buildNumberInt < bundleVersion)
         {
             buildNumberInt = bundleVersion + 1;
